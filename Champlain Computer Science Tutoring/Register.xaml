@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Champlain_Computer_Science_Tutoring.Register">
+    <ContentPage.Content>
+        <StackLayout Padding="20" VerticalOptions="Center">
+            <Label Text="Welcome to Register Page!"
+                        FontSize="Large"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center" />
+            <Entry x:Name="txtId"
+                        FontSize="Large"/>
+            <Entry x:Name="txtPassword"
+                        Placeholder="Password"
+                        FontSize="Large"
+                        IsPassword="True"/>
+            <Entry x:Name="txtFirstName"
+                        Placeholder="FirstName"
+                        FontSize="Large"/>
+            <Entry x:Name="txtLastName"
+                        Placeholder="LastName"
+                        FontSize="Large"/>
+            <Entry x:Name="txtEmail"
+                        Keyboard="Email"
+                        Placeholder="Email"
+                        FontSize="Large"/>
+            <RadioButton x:Name="positionEntry" IsChecked="True"/>
+            <RadioButton x:Name="position1Entry" Content="Tutor"/>
+            <Button x:Name="btnRegister"
+                        Text="Register"
+                        Font="large"
+                        BackgroundColor="LightBlue"
+                        Clicked="btnRegister_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,34 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Champlain_Computer_Science_Tutoring.HomePage">
+             x:Class="Champlain_Computer_Science_Tutoring.HomePage"
+             NavigationPage.HasNavigationBar="False">
     <StackLayout>
-        <Label Text="Welcome to PetClinic " FontSize="Large"/>
+        <Label Text="Welcome to Admin Panel" FontSize="Large" TextColor="Black" HorizontalTextAlignment="Center"/>
         <Image Source="petclinic.jpg"/>
         <Button x:Name="btnTeacherApproval"
                         Text="Teacher Signup Approval"
                         Font="large"
-                        BackgroundColor="LightBlue"/>
+                        TextColor="White"
+                        BackgroundColor="#66181D"
+                        CornerRadius="100"/>
         <Button x:Name="btnTutorApproval"
                         Text="Tutor Signup Approval"
                         Font="large"
-                        BackgroundColor="LightBlue"/>
+                        TextColor="White"
+                        BackgroundColor="#66181D"
+                        CornerRadius="100"/>
         <Button x:Name="btnTeacherList"
                         Text="Teacher List"
                         Font="large"
-                        BackgroundColor="LightBlue"/>
+                        TextColor="White"
+                        BackgroundColor="#66181D"
+                        CornerRadius="100"/>
         <Button x:Name="btnTutorList"
                         Text="Tutor List"
                         Font="large"
-                        BackgroundColor="LightBlue"/>
+                        TextColor="White"
+                        BackgroundColor="#66181D"
+                        CornerRadius="100"/>
         <Button x:Name="btnCourseList"
                         Text="Course List"
                         Font="large"
-                        BackgroundColor="LightBlue"/>
+                        TextColor="White"
+                        BackgroundColor="#66181D"
+                        CornerRadius="100"/>
         <Button x:Name="btnLogout"
                         Text="Logout"
                         Font="large"
-                        BackgroundColor="LightBlue"
+                        TextColor="White"
+                        BackgroundColor="#66181D"
+                        CornerRadius="100"
                         Clicked="btnLogout_Clicked"/>
     </StackLayout>
 </ContentPage>

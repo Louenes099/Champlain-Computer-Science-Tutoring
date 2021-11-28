@@ -1,32 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Champlain_Computer_Science_Tutoring.MainPage">
+             x:Class="Champlain_Computer_Science_Tutoring.MainPage"
+             NavigationPage.HasNavigationBar="False">
 
     <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24,24,24,24" CornerRadius="0"/>
-        <Label Text="Welcome to the Champlain College Saint-Lambert Computer Science Tutoring App" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" FontSize="30"/>
-        <Label Text="Stay on top of your tutoring!" FontSize="Title" Padding="30,10,30,10"/>
-        <Label FontSize="16" Padding="30,24,30,24">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Stay Connected"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
+        <Image Source="tutorlogo.png" WidthRequest="100" HeightRequest="100"/>
+        <Label Text="Computer Science Tutoring App" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" FontSize="25"/>
+        <Label Text="Stay on top of your tutoring!" HorizontalTextAlignment="Center" FontSize="20" Padding="30,10,30,10"/>
         <Button x:Name="btnTeacher"
                 Margin="30,24,30,24"
                         Text="I'm a Teacher"
                         Font="large"
-                        BackgroundColor="LightBlue"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        BackgroundColor="#66181D"
+                        CornerRadius="100"
                         Clicked="btnteacher_Clicked"/>
         <Button x:Name="btnStudent"
                 Margin="30,24,30,24"
                         Text="I'm a Student"
                         Font="large"
-                        BackgroundColor="LightBlue"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        BackgroundColor="#66181D"
+                        CornerRadius="100"
                         Clicked="btnstudent_Clicked"/>
     </StackLayout>
 

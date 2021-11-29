@@ -4,44 +4,61 @@
              x:Class="Champlain_Computer_Science_Tutoring.HomePage"
              NavigationPage.HasNavigationBar="False">
     <StackLayout>
-        <Label Text="Welcome to Admin Panel" FontSize="Large" TextColor="Black" HorizontalTextAlignment="Center"/>
-        <Image Source="petclinic.jpg"/>
-        <Button x:Name="btnTeacherApproval"
+        <StackLayout x:Name="AdminPanel">
+            <Label Text="Welcome to the Tutoring App " FontSize="Large"/>
+            <Button
                         Text="Teacher Signup Approval"
                         Font="large"
-                        TextColor="White"
-                        BackgroundColor="#66181D"
-                        CornerRadius="100"/>
-        <Button x:Name="btnTutorApproval"
+                        BackgroundColor="LightBlue"/>
+            <Button
                         Text="Tutor Signup Approval"
                         Font="large"
-                        TextColor="White"
-                        BackgroundColor="#66181D"
-                        CornerRadius="100"/>
-        <Button x:Name="btnTeacherList"
+                        BackgroundColor="LightBlue"/>
+            <Button
                         Text="Teacher List"
                         Font="large"
-                        TextColor="White"
-                        BackgroundColor="#66181D"
-                        CornerRadius="100"/>
-        <Button x:Name="btnTutorList"
+                        BackgroundColor="LightBlue"/>
+            <Button
                         Text="Tutor List"
                         Font="large"
-                        TextColor="White"
-                        BackgroundColor="#66181D"
-                        CornerRadius="100"/>
-        <Button x:Name="btnCourseList"
+                        BackgroundColor="LightBlue"/>
+            <Button
                         Text="Course List"
                         Font="large"
-                        TextColor="White"
-                        BackgroundColor="#66181D"
-                        CornerRadius="100"/>
-        <Button x:Name="btnLogout"
+                        BackgroundColor="LightBlue"/>
+            <Button
                         Text="Logout"
                         Font="large"
-                        TextColor="White"
-                        BackgroundColor="#66181D"
-                        CornerRadius="100"
+                        BackgroundColor="LightBlue"
                         Clicked="btnLogout_Clicked"/>
+        </StackLayout>
+        <StackLayout x:Name="TeacherPanel">
+            <Label Text="Welcome to the Tutoring App" FontSize="Large"/>
+            <Button
+                        Text="Student Signup Approval"
+                        Font="large"
+                        BackgroundColor="LightBlue"/>
+            <Button
+                        Text="Add Course"
+                        Font="large"
+                        BackgroundColor="LightBlue"/>
+            <Button
+                        Text="Tutoring Session List"
+                        Font="large"
+                        BackgroundColor="LightBlue"/>
+            <Button
+                        Text="Tutor List"
+                        Font="large"
+                        BackgroundColor="LightBlue"/>
+            <Button
+                        Text="Course List"
+                        Font="large"
+                        BackgroundColor="LightBlue"/>
+            <Button
+                        Text="Logout"
+                        Font="large"
+                        BackgroundColor="LightBlue"
+                        Clicked="btnLogout_Clicked"/>
+        </StackLayout>
     </StackLayout>
 </ContentPage>

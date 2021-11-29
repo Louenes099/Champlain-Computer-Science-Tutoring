@@ -15,6 +15,24 @@ namespace Champlain_Computer_Science_Tutoring
         public HomePage()
         {
             InitializeComponent();
+            AdminPanel.IsVisible = false;
+            TeacherPanel.IsVisible = false;
+            if (App.User.Type == "admin")
+            {
+                AdminPanel.IsVisible = true;
+            }
+            if (App.User.Type == "teacher")
+            {
+                AdminPanel.IsVisible = true;
+            }
+            if (App.User.Type == "tutor")
+            {
+                AdminPanel.IsVisible = true;
+            }
+            if (App.User.Type == "student")
+            {
+                AdminPanel.IsVisible = true;
+            }
         }
 
         async void btnLogout_Clicked(object sender, EventArgs e)

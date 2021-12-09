@@ -1,9 +1,7 @@
 ﻿using Firebase.Database;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Champlain_Computer_Science_Tutoring
@@ -30,7 +28,7 @@ namespace Champlain_Computer_Science_Tutoring
         public async Task<bool> SaveUser(User user)
         {
             var data = await firebaseClient.Child(nameof(User)).PostAsync(JsonConvert.SerializeObject(user));
-            if (!String.IsNullOrEmpty(data.Key))
+            if (!string.IsNullOrEmpty(data.Key))
             {
                 return true;
             }
@@ -56,8 +54,17 @@ namespace Champlain_Computer_Science_Tutoring
 
         public async Task<User> GetOneUser(string Key)
         {
-            return (await firebaseClient.Child(nameof(User)
-                    + "/" + Key).OnceSingleAsync<User>());
+            return (await firebaseClient.Child(nameof(User)).OnceAsync<User>()).Select(item => new User
+            {
+                Key = item.Key,
+                UserID = item.Object.UserID,
+                Password = item.Object.Password,
+                FirstName = item.Object.FirstName,
+                LastName = item.Object.LastName,
+                Email = item.Object.Email,
+                Type = item.Object.Type,
+                Authentication = item.Object.Authentication
+            }).Where(i => i.Key == Key).FirstOrDefault();
         }
         public async Task<User> GetLogin(string userid, string password)
         {
@@ -73,7 +80,7 @@ namespace Champlain_Computer_Science_Tutoring
                 Authentication = item.Object.Authentication
             }).Where(i => (i.UserID == userid) && i.Password == password).FirstOrDefault();
         }
-        public async Task<List<User>> GetUnauthenticated(string type, string authentication)
+        public async Task<List<User>> GetUnauthenticated(string type)
         {
             return (await firebaseClient.Child(nameof(User)).OnceAsync<User>()).Select(item => new User
             {
@@ -85,9 +92,9 @@ namespace Champlain_Computer_Science_Tutoring
                 Email = item.Object.Email,
                 Type = item.Object.Type,
                 Authentication = item.Object.Authentication
-            }).Where(i => (i.Type == type) && i.Authentication == authentication).ToList();
+            }).Where(i => (i.Type == type) && i.Authentication == "pending").ToList();
         }
-        public async Task<List<User>> GetUserList(string userId)
+        public async Task<List<User>> GetAuthenticated(string type)
         {
             return (await firebaseClient.Child(nameof(User)).OnceAsync<User>()).Select(item => new User
             {
@@ -99,7 +106,28 @@ namespace Champlain_Computer_Science_Tutoring
                 Email = item.Object.Email,
                 Type = item.Object.Type,
                 Authentication = item.Object.Authentication
-            }).Where(i => i.UserID == userId).ToList();
+            }).Where(i => i.Type == type && i.Authentication == "approved").ToList();
+        }
+        public async Task<List<User>> GetUserListName(string type)
+        {
+            return (await firebaseClient.Child(nameof(User)).OnceAsync<User>()).Select(item => new User
+            {
+                FirstName = item.Object.FirstName
+            }).Where(i => i.Type == type && i.Authentication == "approved").ToList();
+        }
+        public async Task<List<User>> GetUserBasedOnName(string name)
+        {
+            return (await firebaseClient.Child(nameof(User)).OnceAsync<User>()).Select(item => new User
+            {
+                Key = item.Key,
+                UserID = item.Object.UserID,
+                Password = item.Object.Password,
+                FirstName = item.Object.FirstName,
+                LastName = item.Object.LastName,
+                Email = item.Object.Email,
+                Type = item.Object.Type,
+                Authentication = item.Object.Authentication
+            }).Where(i => (i.FirstName == name) && i.Authentication == "approved").ToList();
         }
     }
 }

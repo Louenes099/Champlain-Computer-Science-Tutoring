@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,7 +13,7 @@ namespace Champlain_Computer_Science_Tutoring
         {
             InitializeComponent();
             UserType = userType;
-            if(userType == "teacher")
+            if (userType == "teacher")
             {
                 txtId.Placeholder = "Teacher ID";
             }
@@ -38,17 +34,24 @@ namespace Champlain_Computer_Science_Tutoring
         }
         private async void BtnLogin_Clicked(object sender, EventArgs e)
         {
-            String userName = txtId.Text;
-            String PassWord = txtPassword.Text;
+            string userName = txtId.Text;
+            string PassWord = txtPassword.Text;
             App.User = await App.Database.GetLogin(userName, PassWord);
             if (string.IsNullOrWhiteSpace(txtId.Text) || string.IsNullOrWhiteSpace(txtPassword.Text))
             {
                 await DisplayActionSheet("Error", "Cancel", null, "Missing Fields, Please fill out properly.");
             }
-            if (App.User != null)
+            else if (App.User != null)
             {
-                await DisplayAlert("Login result", "Success", "OK");
-                await Navigation.PushAsync(new HomePage());
+                if (App.User.Authentication == "approved")
+                {
+                    await DisplayAlert("Login result", "Success", "OK");
+                    await Navigation.PushAsync(new HomePage());
+                }
+                else if (App.User.Authentication == "pending")
+                {
+                    await DisplayAlert("Login result", "Failure", "OK");
+                }
             }
             else
             {

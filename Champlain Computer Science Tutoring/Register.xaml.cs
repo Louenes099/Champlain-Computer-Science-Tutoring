@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -49,41 +45,55 @@ namespace Champlain_Computer_Science_Tutoring
                 string.IsNullOrWhiteSpace(txtFirstName.Text) || string.IsNullOrWhiteSpace(txtLastName.Text) ||
                 string.IsNullOrWhiteSpace(txtEmail.Text))
             {
-                string action = await DisplayActionSheet("Error", "Cancel", null, "Missing Fields, Please fill out properly.");
+                await DisplayActionSheet("Error", "Cancel", null, "Missing Fields, Please fill out properly.");
             }
             else if (txtId.Text == "admin" || txtId.Text == "Admin" || txtId.Text == "ADMIN")
             {
-                string action = await DisplayActionSheet("Error", "Cancel", null, "Forbidden, Cannot use reserved username");
+                await DisplayActionSheet("Error", "Cancel", null, "Forbidden, Cannot use reserved username");
             }
             else
             {
-                if (positionEntry.IsChecked)
+                string userName = txtId.Text;
+                string PassWord = txtPassword.Text;
+                App.User = await App.Database.GetLogin(userName, PassWord);
+                if (App.User != null)
                 {
-                    await App.Database.SaveUser(new User
-                    {
-                        UserID = txtId.Text,
-                        Password = txtPassword.Text,
-                        FirstName = txtFirstName.Text,
-                        LastName = txtLastName.Text,
-                        Email = txtEmail.Text,
-                        Type = UserType,
-                        Authentication = "pending"
-                    });
+                    await DisplayActionSheet("Error", "Cancel", null, "Forbidden, Account already exists. If you think this is a mistake, contact the admin.");
                 }
-                else if (position1Entry.IsChecked){
+                else
+                {
+                    if (positionEntry.IsChecked)
+                    {
+                        await App.Database.SaveUser(new User
+                        {
+                            UserID = txtId.Text,
+                            Password = txtPassword.Text,
+                            FirstName = txtFirstName.Text,
+                            LastName = txtLastName.Text,
+                            Email = txtEmail.Text,
+                            Type = UserType,
+                            Authentication = "pending"
+                        });
+                        await DisplayAlert("Register Result", "Success", "OK");
+                        await Navigation.PushAsync(new Login("teacher"));
+                    }
+                    else if (position1Entry.IsChecked)
+                    {
 
-                    await App.Database.SaveUser(new User
-                    {
-                        UserID = txtId.Text,
-                        Password = txtPassword.Text,
-                        FirstName = txtFirstName.Text,
-                        LastName = txtLastName.Text,
-                        Email = txtEmail.Text,
-                        Type = "tutor",
-                        Authentication = "pending"
-                    });
+                        await App.Database.SaveUser(new User
+                        {
+                            UserID = txtId.Text,
+                            Password = txtPassword.Text,
+                            FirstName = txtFirstName.Text,
+                            LastName = txtLastName.Text,
+                            Email = txtEmail.Text,
+                            Type = "tutor",
+                            Authentication = "pending"
+                        });
+                        await DisplayAlert("Register Result", "Success", "OK");
+                        await Navigation.PushAsync(new Login("student"));
+                    }
                 }
-                await DisplayAlert("Register Result", "Success", "OK");
             }
         }
     }

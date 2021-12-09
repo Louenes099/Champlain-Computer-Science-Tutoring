@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.ComponentModel;
 
 namespace Champlain_Computer_Science_Tutoring
 {
@@ -22,10 +19,7 @@ namespace Champlain_Computer_Science_Tutoring
                 OnPropertyChanged(nameof(GetUserId));
             }
         }
-        public string GetUserId
-        {
-            get => $"You entered {userId}";
-        }
+        public string GetUserId => $"You entered {userId}";
         public string Password { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

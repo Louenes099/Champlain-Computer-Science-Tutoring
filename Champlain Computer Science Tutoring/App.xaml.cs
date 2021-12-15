@@ -6,6 +6,8 @@ namespace Champlain_Computer_Science_Tutoring
     {
         public static DBUser Database = new DBUser();
         public static DBCourse CourseDatabase = new DBCourse();
+        public static DBTutoring TutoringDatabase = new DBTutoring();
+        public static DBRegisteredTutoring RegisteredTutoringDatabase = new DBRegisteredTutoring();
         public static User User { get; set; }
         public App()
         {

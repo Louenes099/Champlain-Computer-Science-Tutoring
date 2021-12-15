@@ -12,6 +12,18 @@ namespace Champlain_Computer_Science_Tutoring
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UserList : ContentPage
     {
+        private bool _visible = false;
+
+        public bool Visible
+        {
+            get => _visible;
+            set
+            {
+                _visible = value;
+                OnPropertyChanged();
+            }
+        }
+
         String type = "";
         public UserList(string type)
         {
@@ -41,6 +53,14 @@ namespace Champlain_Computer_Science_Tutoring
             base.OnAppearing();
             collectionView.ItemsSource = await App.Database.GetAuthenticated(type);
             collectionView1.ItemsSource = await App.Database.GetAuthenticated(type);
+            if (type != "tutor")
+            {
+                Visible = false;
+            }
+            else
+            {
+                Visible = true;
+            }
         }
 
         async void EditTap_Tapped(object sender, EventArgs e)

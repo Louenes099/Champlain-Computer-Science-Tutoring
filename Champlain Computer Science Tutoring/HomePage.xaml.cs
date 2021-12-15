@@ -53,13 +53,13 @@ namespace Champlain_Computer_Science_Tutoring
         async void Button_Clicked_2(object sender, EventArgs e)
         {
             String Type = ((Button)sender).CommandParameter.ToString();
-            await Navigation.PushAsync(new Signup(Type));
+            await Navigation.PushAsync(new CourseList());
         }
         //Tutoring Session List
         async void Button_Clicked_3(object sender, EventArgs e)
         {
             String Type = ((Button)sender).CommandParameter.ToString();
-            await Navigation.PushAsync(new Signup(Type));
+            await Navigation.PushAsync(new TutoringList(Type));
         }
     }
 }

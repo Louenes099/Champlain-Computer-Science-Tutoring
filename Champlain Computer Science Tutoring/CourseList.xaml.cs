@@ -17,11 +17,9 @@ namespace Champlain_Computer_Science_Tutoring
             InitializeComponent();
             collectionView.IsVisible = false;
             collectionView1.IsVisible = false;
-            AddToolBarItem.IsEnabled = false;
             if (App.User.Type == "admin")
             {
                 collectionView1.IsVisible = true;
-                AddToolBarItem.IsEnabled = true;
             }
             if (App.User.Type == "teacher")
             {
@@ -40,6 +38,7 @@ namespace Champlain_Computer_Science_Tutoring
         {
             base.OnAppearing();
             collectionView.ItemsSource = await App.CourseDatabase.GetCourses();
+            collectionView1.ItemsSource = await App.CourseDatabase.GetCourses();
         }
         async void EditTap_Tapped(object sender, EventArgs e)
         {
@@ -55,11 +54,11 @@ namespace Champlain_Computer_Science_Tutoring
             if (course != null)
             {
                 await App.CourseDatabase.DeleteCourse(Key);
-                await DisplayAlert("Success", "User Deleted= " + course.Name, "OK");
+                await DisplayAlert("Success", "Course Deleted= " + course.Name, "OK");
             }
             else
             {
-                await DisplayAlert("Required", "User doesn't exist", "OK");
+                await DisplayAlert("Required", "Course doesn't exist", "OK");
             }
             OnAppearing();
         }
@@ -67,6 +66,7 @@ namespace Champlain_Computer_Science_Tutoring
         async void AddToolBarItem_Clicked(object sender, EventArgs e)
         {
             Course course = new Course();
+            course.Name = "empty";
             await Navigation.PushAsync(new CourseEdit(course));
         }
     }

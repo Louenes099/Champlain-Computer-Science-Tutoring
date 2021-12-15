@@ -17,6 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="TutoringEdit.xaml.cs">
+      <DependentUpon>TutoringEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="TutoringList.xaml.cs">
+      <DependentUpon>TutoringList.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>

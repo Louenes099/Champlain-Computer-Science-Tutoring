@@ -21,6 +21,7 @@ namespace Champlain_Computer_Science_Tutoring
                 FirstName = item.Object.FirstName,
                 LastName = item.Object.LastName,
                 Email = item.Object.Email,
+                AssignedTeacher = item.Object.AssignedTeacher,
                 Type = item.Object.Type,
                 Authentication = item.Object.Authentication
             }).ToList();
@@ -62,6 +63,7 @@ namespace Champlain_Computer_Science_Tutoring
                 FirstName = item.Object.FirstName,
                 LastName = item.Object.LastName,
                 Email = item.Object.Email,
+                AssignedTeacher = item.Object.AssignedTeacher,
                 Type = item.Object.Type,
                 Authentication = item.Object.Authentication
             }).Where(i => i.Key == Key).FirstOrDefault();
@@ -90,6 +92,7 @@ namespace Champlain_Computer_Science_Tutoring
                 FirstName = item.Object.FirstName,
                 LastName = item.Object.LastName,
                 Email = item.Object.Email,
+                AssignedTeacher = item.Object.AssignedTeacher,
                 Type = item.Object.Type,
                 Authentication = item.Object.Authentication
             }).Where(i => (i.Type == type) && i.Authentication == "pending").ToList();
@@ -104,18 +107,12 @@ namespace Champlain_Computer_Science_Tutoring
                 FirstName = item.Object.FirstName,
                 LastName = item.Object.LastName,
                 Email = item.Object.Email,
+                AssignedTeacher = item.Object.AssignedTeacher,
                 Type = item.Object.Type,
                 Authentication = item.Object.Authentication
             }).Where(i => i.Type == type && i.Authentication == "approved").ToList();
         }
-        public async Task<List<User>> GetUserListName(string type)
-        {
-            return (await firebaseClient.Child(nameof(User)).OnceAsync<User>()).Select(item => new User
-            {
-                FirstName = item.Object.FirstName
-            }).Where(i => i.Type == type && i.Authentication == "approved").ToList();
-        }
-        public async Task<List<User>> GetUserBasedOnName(string name)
+        public async Task<User> GetUserBasedOnName(string name)
         {
             return (await firebaseClient.Child(nameof(User)).OnceAsync<User>()).Select(item => new User
             {
@@ -125,9 +122,10 @@ namespace Champlain_Computer_Science_Tutoring
                 FirstName = item.Object.FirstName,
                 LastName = item.Object.LastName,
                 Email = item.Object.Email,
+                AssignedTeacher = item.Object.AssignedTeacher,
                 Type = item.Object.Type,
                 Authentication = item.Object.Authentication
-            }).Where(i => (i.FirstName == name) && i.Authentication == "approved").ToList();
+            }).Where(i => (i.FirstName + " " + i.LastName == name) && i.Authentication == "approved").FirstOrDefault();
         }
     }
 }

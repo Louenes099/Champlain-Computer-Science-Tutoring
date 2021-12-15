@@ -64,5 +64,29 @@ namespace Champlain_Computer_Science_Tutoring
                 Teacher = item.Object.Teacher
             }).Where(i => i.Key == Key).FirstOrDefault();
         }
+        public async Task<List<Course>> GetTutorCourses(string teacher)
+        {
+            return (await firebaseClient.Child(nameof(Course)).OnceAsync<Course>()).Select(item => new Course
+            {
+                Key = item.Key,
+                CourseID = item.Object.CourseID,
+                Name = item.Object.Name,
+                Section = item.Object.Section,
+                Semester = item.Object.Semester,
+                Teacher = item.Object.Teacher
+            }).Where(i => i.Teacher == teacher).ToList();
+        }
+        public async Task<Course> GetCourse(string name)
+        {
+            return (await firebaseClient.Child(nameof(Course)).OnceAsync<Course>()).Select(item => new Course
+            {
+                Key = item.Key,
+                CourseID = item.Object.CourseID,
+                Name = item.Object.Name,
+                Section = item.Object.Section,
+                Semester = item.Object.Semester,
+                Teacher = item.Object.Teacher
+            }).Where(i => i.Name + " " + i.Section + " " + i.Teacher == name).FirstOrDefault();
+        }
     }
 }

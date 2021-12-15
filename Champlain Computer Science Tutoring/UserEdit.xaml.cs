@@ -22,6 +22,23 @@ namespace Champlain_Computer_Science_Tutoring
             txtLastName.Text = user.LastName;
             txtEmail.Text = user.Email;
             positionEntry.Content = user.Type;
+            if(user.Type == "tutor")
+            {
+                pickTeacher.IsVisible = true;
+            }
+            else
+            {
+                pickTeacher.IsVisible = false;
+            }
+        }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            List<User> TeacherName = await App.Database.GetAuthenticated("teacher");
+            foreach (User t in TeacherName)
+            {
+                pickTeacher.Items.Add(t.FirstName + " " + t.LastName);
+            }
         }
 
         async void btnUpdate_Clicked(object sender, EventArgs e)
@@ -37,18 +54,39 @@ namespace Champlain_Computer_Science_Tutoring
             }
             else
             {
-                await App.Database.UpdateUser(new User
+                if(user.Type == "tutor")
                 {
-                    Key = user.Key,
-                    UserID = txtId.Text,
-                    Password = user.Password,
-                    FirstName = txtFirstName.Text,
-                    LastName = txtLastName.Text,
-                    Email = txtEmail.Text,
-                    Type = (string)positionEntry.Content,
-                    Authentication = "pending"
-                });
-                await DisplayAlert("Register Result", "Success", "OK");
+                    await App.Database.UpdateUser(new User
+                    {
+                        Key = user.Key,
+                        UserID = txtId.Text,
+                        Password = user.Password,
+                        FirstName = txtFirstName.Text,
+                        LastName = txtLastName.Text,
+                        Email = txtEmail.Text,
+                        AssignedTeacher = (string)pickTeacher.SelectedItem,
+                        Type = (string)positionEntry.Content,
+                        Authentication = user.Authentication
+                    });
+                    await DisplayAlert("Register Result", "Success", "OK");
+                }
+                else
+                {
+                    await App.Database.UpdateUser(new User
+                    {
+                        Key = user.Key,
+                        UserID = txtId.Text,
+                        Password = user.Password,
+                        FirstName = txtFirstName.Text,
+                        LastName = txtLastName.Text,
+                        Email = txtEmail.Text,
+                        AssignedTeacher = null,
+                        Type = (string)positionEntry.Content,
+                        Authentication = user.Authentication
+                    });
+                    await DisplayAlert("Register Result", "Success", "OK");
+                }
+                await Navigation.PushAsync(new UserList(user.Type));
             }
         }
     }

@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Champlain_Computer_Science_Tutoring.TutoringList">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="AddToolBarItem" Text="Add" Clicked="AddToolBarItem_Clicked">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+        <Label Text="Course List: "/>
+            <CollectionView x:Name="collectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="TutoringID: " FontSize="Small"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding TutoringID}" FontSize="Small"/>
+                                <Label Grid.Row="1" Grid.Column="0" Text="Course Name: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding CourseName}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="2" Grid.Column="0" Text="Section Number: " FontSize="Small"/>
+                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding CourseSection}" FontSize="Small"/>
+                                <Label Grid.Row="3" Grid.Column="0" Text="Semester: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="3" Grid.Column="1" Text="{Binding CourseSemester}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="4" Grid.Column="0" Text="Teacher: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="4" Grid.Column="1" Text="{Binding CourseTeacher}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="5" Grid.Column="0" Text="Tutor: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="5" Grid.Column="1" Text="{Binding Tutor}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="6" Grid.Column="0" Text="Tutoring Time: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="6" Grid.Column="1" Text="{Binding TutoringTime}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="7" Grid.Column="0" Text="Tutoring Duration: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="7" Grid.Column="1" Text="{Binding TutoringSessionTime}" TextColor="Silver" FontSize="Small"/>
+                                <Image Source="register.png" Grid.Row="4" Grid.Column="2" HeightRequest="20" WidthRequest="20">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="gradeTap" Tapped="GradeTap_Tapped" CommandParameter="{Binding Key}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                </Grid>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <CollectionView x:Name="collectionView1">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="TutoringID: " FontSize="Small"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding TutoringID}" FontSize="Small"/>
+                                <Label Grid.Row="1" Grid.Column="0" Text="Course Name: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding CourseName}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="2" Grid.Column="0" Text="Section Number: " FontSize="Small"/>
+                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding CourseSection}" FontSize="Small"/>
+                                <Label Grid.Row="3" Grid.Column="0" Text="Semester: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="3" Grid.Column="1" Text="{Binding CourseSemester}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="4" Grid.Column="0" Text="Teacher: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="4" Grid.Column="1" Text="{Binding CourseTeacher}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="5" Grid.Column="0" Text="Tutor: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="5" Grid.Column="1" Text="{Binding Tutor}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="6" Grid.Column="0" Text="Tutoring Time: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="6" Grid.Column="1" Text="{Binding TutoringTime}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="7" Grid.Column="0" Text="Tutoring Duration: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="7" Grid.Column="1" Text="{Binding TutoringSessionTime}" TextColor="Silver" FontSize="Small"/>
+                                <Image Source="edit.png" Grid.Row="2" Grid.Column="2" HeightRequest="20" WidthRequest="20">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="editTap" Tapped="EditTap_Tapped" CommandParameter="{Binding Key}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image Source="delete.png" Grid.Row="5" Grid.Column="2" HeightRequest="20" WidthRequest="20">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="DeleteTap" Tapped="DeleteTap_Tapped" CommandParameter="{Binding Key}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <CollectionView x:Name="collectionView2">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="TutoringID: " FontSize="Small"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding TutoringID}" FontSize="Small"/>
+                                <Label Grid.Row="1" Grid.Column="0" Text="Course Name: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding CourseName}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="2" Grid.Column="0" Text="Section Number: " FontSize="Small"/>
+                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding CourseSection}" FontSize="Small"/>
+                                <Label Grid.Row="3" Grid.Column="0" Text="Semester: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="3" Grid.Column="1" Text="{Binding CourseSemester}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="4" Grid.Column="0" Text="Teacher: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="4" Grid.Column="1" Text="{Binding CourseTeacher}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="5" Grid.Column="0" Text="Tutor: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="5" Grid.Column="1" Text="{Binding Tutor}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="6" Grid.Column="0" Text="Tutoring Time: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="6" Grid.Column="1" Text="{Binding TutoringTime}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="7" Grid.Column="0" Text="Tutoring Duration: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="7" Grid.Column="1" Text="{Binding TutoringSessionTime}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="8" Grid.Column="0" Text="Grade: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="8" Grid.Column="1" Text="{Binding Grade}" TextColor="Silver" FontSize="Small"/>
+                            </Grid>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <CollectionView x:Name="collectionView3">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="TutoringID: " FontSize="Small"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding TutoringID}" FontSize="Small"/>
+                                <Label Grid.Row="1" Grid.Column="0" Text="Course Name: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding CourseName}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="2" Grid.Column="0" Text="Section Number: " FontSize="Small"/>
+                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding CourseSection}" FontSize="Small"/>
+                                <Label Grid.Row="3" Grid.Column="0" Text="Semester: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="3" Grid.Column="1" Text="{Binding CourseSemester}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="4" Grid.Column="0" Text="Teacher: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="4" Grid.Column="1" Text="{Binding CourseTeacher}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="5" Grid.Column="0" Text="Tutor: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="5" Grid.Column="1" Text="{Binding Tutor}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="6" Grid.Column="0" Text="Tutoring Time: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="6" Grid.Column="1" Text="{Binding TutoringTime}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="7" Grid.Column="0" Text="Tutoring Duration: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="7" Grid.Column="1" Text="{Binding TutoringSessionTime}" TextColor="Silver" FontSize="Small"/>
+                                <Image Source="register.png" Grid.Row="4" Grid.Column="2" HeightRequest="20" WidthRequest="20">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="subTap" Tapped="SubTap_Tapped" CommandParameter="{Binding Key}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <CollectionView x:Name="collectionView4">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="TutoringID: " FontSize="Small"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding TutoringID}" FontSize="Small"/>
+                                <Label Grid.Row="1" Grid.Column="0" Text="Course Name: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding CourseName}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="2" Grid.Column="0" Text="Section Number: " FontSize="Small"/>
+                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding CourseSection}" FontSize="Small"/>
+                                <Label Grid.Row="3" Grid.Column="0" Text="Semester: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="3" Grid.Column="1" Text="{Binding CourseSemester}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="4" Grid.Column="0" Text="Teacher: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="4" Grid.Column="1" Text="{Binding CourseTeacher}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="5" Grid.Column="0" Text="Tutor: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="5" Grid.Column="1" Text="{Binding Tutor}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="6" Grid.Column="0" Text="Tutoring Time: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="6" Grid.Column="1" Text="{Binding TutoringTime}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="7" Grid.Column="0" Text="Tutoring Duration: " TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="7" Grid.Column="1" Text="{Binding TutoringSessionTime}" TextColor="Silver" FontSize="Small"/>
+                                <Image Source="delete.png" Grid.Row="5" Grid.Column="2" HeightRequest="20" WidthRequest="20">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="DeleteTap" Tapped="Delete1Tap_Tapped" CommandParameter="{Binding Key}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+    

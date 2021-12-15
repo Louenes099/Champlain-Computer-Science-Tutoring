@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Champlain_Computer_Science_Tutoring.CourseEdit">
+             x:Class="Champlain_Computer_Science_Tutoring.TutoringEdit">
     <ContentPage.Content>
         <StackLayout Padding="20" VerticalOptions="Center">
             <Label Text="Welcome to Register Page!"
@@ -9,18 +9,14 @@
                         VerticalOptions="Center"
                         HorizontalOptions="Center" />
             <Entry x:Name="txtId"
-                        Placeholder="CourseId"
+                        Placeholder="TutoringId"
                         FontSize="Large"/>
-            <Entry x:Name="txtSection"
-                        Placeholder="Section Number"
+            <Picker x:Name="pickCourse"
                         FontSize="Large"/>
-            <Entry x:Name="txtName"
-                        Placeholder="Course Name"
+            <Entry x:Name="txtDuration"
+                        Placeholder="Tutoring Session Duration"
                         FontSize="Large"/>
-            <Entry x:Name="txtSemester"
-                        Placeholder="Semester Number"
-                        FontSize="Large"/>
-            <Picker x:Name="pickTeacher"
+            <DatePicker x:Name="txtDate"
                         FontSize="Large"/>
             <Button x:Name="btnSend"
                         Font="large"

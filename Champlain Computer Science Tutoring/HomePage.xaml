@@ -11,28 +11,30 @@
             <Button Text="Teacher List" Font="large" BackgroundColor="LightBlue" Clicked="Button_Clicked_1" CommandParameter="teacher"/>
             <Button Text="Tutor List" Font="large" BackgroundColor="LightBlue" Clicked="Button_Clicked_1" CommandParameter="tutor"/>
             <Button Text="Course List" Font="large" BackgroundColor="LightBlue" Clicked="Button_Clicked_2" CommandParameter="admin"/>
+            <Button Text="Graded Tutoring Session" Font="large" BackgroundColor="LightBlue" Clicked="Button_Clicked_2" CommandParameter="graded"/>
             <Button Text="Logout" Font="large" BackgroundColor="LightBlue" Clicked="btnLogout_Clicked"/>
         </StackLayout>
         <StackLayout x:Name="TeacherPanel">
             <Label Text="Welcome to the Tutoring App" FontSize="Large"/>
             <Button Text="Student Signup Approval" Font="large" BackgroundColor="LightBlue" Clicked="Button_Clicked" CommandParameter="student"/>
             <Button Text="Add Course" Font="large" BackgroundColor="LightBlue" Clicked="Button_Clicked_2" CommandParameter="teacher"/>
+            <Button Text="Grade Tutoring Session" Font="large" BackgroundColor="LightBlue" Clicked="Button_Clicked_3" CommandParameter="grade"/>
             <Button Text="Tutoring Session List" Font="large" BackgroundColor="LightBlue" Clicked="Button_Clicked_3" CommandParameter="teacher"/>
-            <Button Text="Grade Tutoring Session" Font="large" BackgroundColor="LightBlue" Clicked="Button_Clicked_3" CommandParameter="teacher"/>
+            <Button Text="Graded Tutoring Session" Font="large" BackgroundColor="LightBlue" Clicked="Button_Clicked_3" CommandParameter="graded"/>
             <Button Text="Tutor List" Font="large" BackgroundColor="LightBlue" Clicked="Button_Clicked_1" CommandParameter="tutor"/>
             <Button Text="Course List" Font="large" BackgroundColor="LightBlue" Clicked="Button_Clicked_2" CommandParameter="tutor"/>
             <Button Text="Logout" Font="large" BackgroundColor="LightBlue" Clicked="btnLogout_Clicked"/>
         </StackLayout>
         <StackLayout x:Name="TutorPanel">
             <Label Text="Welcome to the Tutoring App" FontSize="Large"/>
-            <Button Text="Add Tutoring Session" Font="large" BackgroundColor="LightBlue" Clicked="Button_Clicked_3" CommandParameter="tutor"/>
-            <Button Text="Tutoring Session List" Font="large" BackgroundColor="LightBlue" Clicked="Button_Clicked_3" CommandParameter="admin"/>
-            <Button Text="Graded Tutoring Session" Font="large" BackgroundColor="LightBlue" Clicked="Button_Clicked_2" CommandParameter="tutor"/>
+            <Button Text="Tutoring Session List" Font="large" BackgroundColor="LightBlue" Clicked="Button_Clicked_3" CommandParameter="tutor"/>
+            <Button Text="Graded Tutoring Session" Font="large" BackgroundColor="LightBlue" Clicked="Button_Clicked_2" CommandParameter="graded"/>
             <Button Text="Logout" Font="large" BackgroundColor="LightBlue" Clicked="btnLogout_Clicked"/>
         </StackLayout>
         <StackLayout x:Name="StudentPanel">
             <Label Text="Welcome to the Tutoring App" FontSize="Large"/>
-            <Button Text="Signup for Tutoring Session" Font="large" BackgroundColor="LightBlue" CommandParameter="student"/>
+            <Button Text="Tutoring Session" Font="large" BackgroundColor="LightBlue" CommandParameter="student"/>
+            <Button Text="Registered Tutoring Session" Font="large" BackgroundColor="LightBlue" CommandParameter="registered"/>
             <Button Text="Teacher List" Font="large" BackgroundColor="LightBlue" Clicked="Button_Clicked_1" CommandParameter="teacher"/>
             <Button Text="Tutor List" Font="large" BackgroundColor="LightBlue" Clicked="Button_Clicked_1" CommandParameter="tutor"/>
             <Button Text="Course List" Font="large" BackgroundColor="LightBlue" Clicked="Button_Clicked_2" CommandParameter="student"/>

@@ -5,33 +5,43 @@
     <StackLayout>
         <CollectionView x:Name="collectionView">
             <CollectionView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:Name="dataTemplate">
                     <StackLayout>
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="User:" FontSize="Small"/>
-                            <Label Grid.Row="1" Grid.Column="0" Text="{Binding UserID}" FontSize="Small"/>
+                            <Label Grid.Row="0" Grid.Column="0" Text="UserID:" FontSize="Small"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding UserID}" FontSize="Small"/>
+                            <Label Grid.Row="1" Grid.Column="0" Text="First name:" FontSize="Small"/>
                             <Label Grid.Row="1" Grid.Column="1" Text="{Binding FirstName}" FontSize="Small"/>
-                            <Label Grid.Row="1" Grid.Column="2" Text="{Binding LastName}" TextColor="Silver" FontSize="Small"/>
-                            <Label Grid.Row="2" Grid.Column="0" Text="{Binding Email}" TextColor="Silver" FontSize="Small"/>
-                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Type}" TextColor="Silver" FontSize="Small"/>
-                            <Label Grid.Row="2" Grid.Column="2" Text="{Binding Authentication}" FontSize="Small"/>
+                            <Label Grid.Row="2" Grid.Column="0" Text="Last name:" FontSize="Small"/>
+                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding LastName}" TextColor="Silver" FontSize="Small"/>
+                            <Label Grid.Row="3" Grid.Column="0" Text="Email:" FontSize="Small"/>
+                            <Label Grid.Row="3" Grid.Column="1" Text="{Binding Email}" TextColor="Silver" FontSize="Small"/>
+                            <Label Grid.Row="4" Grid.Column="0" Text="User type:" FontSize="Small"/>
+                            <Label Grid.Row="4" Grid.Column="1" Text="{Binding Type}" TextColor="Silver" FontSize="Small"/>
+                            <Label Grid.Row="5" Grid.Column="0" Text="User Status:" FontSize="Small"/>
+                            <Label Grid.Row="5" Grid.Column="1" Text="{Binding Authentication}" FontSize="Small"/>
+                            <Label IsVisible="{Binding Visible}" Grid.Row="6" Grid.Column="0" Text="Assigned teacher:" FontSize="Small"/>
+                            <Label IsVisible="{Binding Visible}" Grid.Row="6" Grid.Column="1" Text="{Binding AssignedTeacher}" FontSize="Small"/>
                             <Image Source="edit.png" Grid.Row="1" Grid.Column="3" HeightRequest="20" WidthRequest="20">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer x:Name="editTap" Tapped="EditTap_Tapped" CommandParameter="{Binding Key}"/>
                                 </Image.GestureRecognizers>
                             </Image>
-                            <Image Source="delete.png" Grid.Row="2" Grid.Column="3" HeightRequest="20" WidthRequest="20">
+                            <Image Source="delete.png" Grid.Row="5" Grid.Column="3" HeightRequest="20" WidthRequest="20">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer x:Name="DeleteTap" Tapped="DeleteTap_Tapped" CommandParameter="{Binding Key}"/>
                                 </Image.GestureRecognizers>
@@ -50,19 +60,26 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="User:" FontSize="Small"/>
-                            <Label Grid.Row="1" Grid.Column="0" Text="{Binding UserID}" FontSize="Small"/>
+                            <Label Grid.Row="0" Grid.Column="0" Text="UserID:" FontSize="Small"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding UserID}" FontSize="Small"/>
+                            <Label Grid.Row="1" Grid.Column="0" Text="First name:" FontSize="Small"/>
                             <Label Grid.Row="1" Grid.Column="1" Text="{Binding FirstName}" FontSize="Small"/>
-                            <Label Grid.Row="1" Grid.Column="2" Text="{Binding LastName}" TextColor="Silver" FontSize="Small"/>
-                            <Label Grid.Row="2" Grid.Column="0" Text="{Binding Email}" TextColor="Silver" FontSize="Small"/>
-                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Type}" TextColor="Silver" FontSize="Small"/>
-                            <Label Grid.Row="2" Grid.Column="2" Text="{Binding Authentication}" FontSize="Small"/>
+                            <Label Grid.Row="2" Grid.Column="0" Text="Last name:" FontSize="Small"/>
+                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding LastName}" TextColor="Silver" FontSize="Small"/>
+                            <Label Grid.Row="3" Grid.Column="0" Text="Email:" FontSize="Small"/>
+                            <Label Grid.Row="3" Grid.Column="1" Text="{Binding Email}" TextColor="Silver" FontSize="Small"/>
+                            <Label Grid.Row="4" Grid.Column="0" Text="User type:" FontSize="Small"/>
+                            <Label Grid.Row="4" Grid.Column="1" Text="{Binding Type}" TextColor="Silver" FontSize="Small"/>
+                            <Label Grid.Row="5" Grid.Column="0" Text="User Status:" FontSize="Small"/>
+                            <Label Grid.Row="5" Grid.Column="1" Text="{Binding Authentication}" FontSize="Small"/>
                         </Grid>
                     </StackLayout>
                 </DataTemplate>

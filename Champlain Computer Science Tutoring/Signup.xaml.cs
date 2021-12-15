@@ -36,6 +36,7 @@ namespace Champlain_Computer_Science_Tutoring
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
+                AssignedTeacher = null,
                 Type = user.Type,
                 Authentication = "approved"
             });

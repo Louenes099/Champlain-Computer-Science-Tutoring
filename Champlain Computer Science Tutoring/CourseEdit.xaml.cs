@@ -12,17 +12,18 @@ namespace Champlain_Computer_Science_Tutoring
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CourseEdit : ContentPage
     {
+        Course course = new Course();
         public CourseEdit(Course course)
         {
             InitializeComponent();
-            if (course != null)
+            this.course = course;
+            if (course.Name != "empty")
             {
                 txtId.Text = course.CourseID;
                 txtName.Text = course.Name;
                 txtSection.Text = course.Section;
                 pickTeacher.SelectedItem = course.Teacher;
                 btnSend.Text = "Update";
-                btnSend.CommandParameter = course.Key;
             }
             else
             {
@@ -32,43 +33,49 @@ namespace Champlain_Computer_Science_Tutoring
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            pickTeacher.ItemsSource = await App.Database.GetUserListName("teacher");
+            List<User> TeacherName = await App.Database.GetAuthenticated("teacher");
+            foreach (User t in TeacherName)
+            {
+                pickTeacher.Items.Add(t.FirstName + " " + t.LastName);
+            }
         }
 
         async void btnUpdate_Clicked(object sender, EventArgs e)
         {
-            String key = ((Button)sender).CommandParameter.ToString();
-            if (string.IsNullOrWhiteSpace(txtId.Text) || string.IsNullOrWhiteSpace(txtName.Text) ||
-                string.IsNullOrWhiteSpace(txtSection.Text) || pickTeacher.SelectedItem == null)
+            if (string.IsNullOrWhiteSpace(txtId.Text) || string.IsNullOrWhiteSpace(txtName.Text) || string.IsNullOrWhiteSpace(txtSemester.Text) ||
+                string.IsNullOrWhiteSpace(txtSection.Text) || string.IsNullOrWhiteSpace((string)pickTeacher.SelectedItem))
             {
                 await DisplayActionSheet("Error", "Cancel", null, "Missing Fields, Please fill out properly.");
             }
             else
             {
-                if(btnSend.Text == "Update")
+                if (course.Name != "empty")
                 {
                     await App.CourseDatabase.UpdateCourse(new Course
                     {
-                        Key = key,
+                        Key = course.Key,
                         CourseID = txtId.Text,
                         Section = txtSection.Text,
                         Name = txtName.Text,
+                        Semester = txtSemester.Text,
                         Teacher = (string)pickTeacher.SelectedItem
                     });
                     await DisplayAlert("Update Result", "Success", "OK");
                 }
-                else if(btnSend.Text == "Add")
+                else
                 {
                 await App.CourseDatabase.SaveCourse(new Course
                 {
                     CourseID = txtId.Text,
                     Section = txtSection.Text,
                     Name = txtName.Text,
+                    Semester = txtSemester.Text,
                     Teacher = (string)pickTeacher.SelectedItem
                 });
                     await DisplayAlert("Adding Result", "Success", "OK");
                 }
             }
+            await Navigation.PushAsync(new CourseList());
         }
     }
 }

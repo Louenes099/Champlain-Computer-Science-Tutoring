@@ -20,6 +20,8 @@
                         Keyboard="Email"
                         Placeholder="Email"
                         FontSize="Large"/>
+            <Picker x:Name="pickTeacher"
+                        FontSize="Large"/>
             <RadioButton x:Name="positionEntry" IsChecked="True"/>
             <Button x:Name="btnUpdate"
                         Text="Update"

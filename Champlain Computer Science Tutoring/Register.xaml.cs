@@ -71,6 +71,7 @@ namespace Champlain_Computer_Science_Tutoring
                             FirstName = txtFirstName.Text,
                             LastName = txtLastName.Text,
                             Email = txtEmail.Text,
+                            AssignedTeacher = null,
                             Type = UserType,
                             Authentication = "pending"
                         });
@@ -87,6 +88,7 @@ namespace Champlain_Computer_Science_Tutoring
                             FirstName = txtFirstName.Text,
                             LastName = txtLastName.Text,
                             Email = txtEmail.Text,
+                            AssignedTeacher = null,
                             Type = "tutor",
                             Authentication = "pending"
                         });
